@@ -1,7 +1,11 @@
 package main
 
-import (
-	"fmt"
+
+const (
+	ColorReset  = "\033[0m"
+	ColorRed    = "\033[31m"
+	ColorGreen  = "\033[32m"
+	ColorBlue   = "\033[34m"
 )
 
 
@@ -15,7 +19,6 @@ func intToWord(n int) string {
 		19: "nineteen", 20: "twenty",
 	}
 
-	
 	if n >= 1 && n <= 20 {
 		return words[n] // возвращаем слово
 	}
@@ -26,23 +29,18 @@ func intToWord(n int) string {
 
 // Функция выполняет математическую операцию и возвращает строку
 func myCalculation(a int, b int, op string) string {
-	var result int // переменная для хранения результата
 
-	
 	if op == "+" {
 		result = a + b // сложение
 	} else if op == "*" {
 		result = a * b // умножение
 	} else {
-		// Если оператор неизвестный — ошибка
-		panic("Invalid operator")
-	}
 
-	
 	return intToWord(a) + " " + op + " " + intToWord(b) + " = " + intToWord(result)
 }
 
 func main() {
+
 	// := — это короткое объявление переменной
 	// number — это число, с которым будут выполняться операции
 	number := 3
@@ -57,3 +55,4 @@ func main() {
 	}
 }
 	
+
