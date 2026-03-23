@@ -1,13 +1,12 @@
 package main
+
 import "fmt"
 
-func main() {
-    fmt.Println("Calculator for Code Review is ready!")
-}
-package main
-
-import (
-	"fmt"
+const (
+	ColorReset  = "\033[0m"
+	ColorRed    = "\033[31m"
+	ColorGreen  = "\033[32m"
+	ColorBlue   = "\033[34m"
 )
 
 func intToWord(n int) string {
@@ -18,7 +17,6 @@ func intToWord(n int) string {
 		15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
 		19: "nineteen", 20: "twenty",
 	}
-
 	if n >= 1 && n <= 20 {
 		return words[n]
 	}
@@ -27,24 +25,24 @@ func intToWord(n int) string {
 
 func myCalculation(a int, b int, op string) string {
 	var result int
-
 	if op == "+" {
 		result = a + b
 	} else if op == "*" {
 		result = a * b
 	} else {
-		panic("Invalid operator")
+		return ColorRed + "Invalid operator" + ColorReset
 	}
-
 	return intToWord(a) + " " + op + " " + intToWord(b) + " = " + intToWord(result)
 }
 
 func main() {
-	number := 3
+	// Синий заголовок
+	fmt.Println(ColorBlue + "=== Calculator for Code Review is ready! ===" + ColorReset)
 
+	number := 3
 	for i := 1; i <= 20; i++ {
-		fmt.Println(myCalculation(i, number, "+"))
-		fmt.Println(myCalculation(i, number, "*"))
+		// Зеленый цвет для успешных расчетов
+		res := myCalculation(i, number, "+")
+		fmt.Println(ColorGreen + res + ColorReset)
 	}
 }
-
